@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phénix Pneu – Mobilier recyclé & écologique</title>
+  <link rel="stylesheet" href="Style.css">
+
+  <!-- AOS (animations au scroll) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      AOS.init({ duration: 1000, once: true });
+    });
+  </script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+
+  <style>
+    
+    .hidden { display: none; }
+    .mobile-menu { display: block; }
+    .actions { margin-top: 15px; display: flex; gap: 10px; }
+    button { cursor: pointer; }
+    #confirmation-message { margin-top: 15px; color: green; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+<header> 
+<nav>
+  <a href="#" class="nav-icon" aria-label="visit homepage" aria-current="page">
+    <img src="/PNEU/logos.jpg" alt="logo du site">
+    <span>Phénix-pneu</span>
+  </a>
+  <div class="main-navlinks">
+    <div class="navlinks-container">
+      <a href="#" data-section="home">Home</a>
+      <a href="#" data-section="about">About</a>
+      <a href="#" data-section="contact">Contact</a>
+      <a href="#" data-section="fauchai">Nos chaises et nos fauteuils</a>
+      <a href="#" data-section="accessoire">Nos accessoires</a>
+      <a href="#" data-section="command">Commande</a>
+      <a href="#" data-section="donations">Dons de pneu</a>
+      <a href="#" data-section="avis">Avis</a>
+    </div>
+  </div>
+</nav>
+
+<button class="hamburger" aria-expanded="false">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
+</header>
+
+
+
+
+
+
+
+
+
+
+<!-- SECTION ACCUEIL -->
+<section id="home" class="content-section active">
+  <div class="welcome"><h2>Bienvenue sur le phénix des pneus</h2></div>
+</section>
+
+<section class="presentation content-section active">
+  <div class="overlay-text"><p>Du pneu usé au design-mobilier recyclé,durable et unique</p></div>
+</section>
+
+
+
+
+<section class="slidy content-section active">
+<h4>cliquez sur les images pour vous renseigne sur les Prix</h4>
+ <div class="slider-container active">
+  <div class="slider">
+    <div class="slide"> <img src="slide.jpg" alt="" data-price="2500 FCFA"></div>
+    <div class="slide"> <img src="chaise2.jpeg" alt="" data-price="4000 FCFA"></div>
+    <div class="slide"> <img src="chaise3.jpeg" alt="" data-price="5000 FCFA"></div>
+    <div class="slide"> <img src="fauteuil1.jpeg" alt="" data-price="1000"></div>
+    <div class="slide"> <img src="fauteuil3.jpeg" alt="" data-price=" 122"></div>
+    <div class="slide"> <img src="/ensemble12.webp" alt="" data-price=" 122"></div>
+    <div class="slide"> <img src="table14.webp" alt="" data-price=" 122"></div>
+    <div class="slide"> <img src="niches2.jpeg" alt="" data-price=" 122"></div>
+
+
+  </div>
+  <button class="prev">&#10094;</button>
+  <button class="next">&#10095;</button>
+ </div>
+ <div id="price-display" class="hidden">
+  <span id="price-text"></span>
+  <button id="close-price">Fermer</button>
+ </div>
+</section>
+
+
+
+
+
+<!-- SECTION À PROPOS -->
+<section id="about" class="content-section hidden">
+  <div class="flash">
+    <div class="h2"><h2>À propos de nous</h2></div>
+    <h3 style="color: #fff5e1; font-style:italic; margin-bottom:15px;">
+      « Redonner vie aux pneus, c’est préserver l’avenir »
+    </h3>
+ <p>Nous sommes passionnés par la <strong>revalorisation des pneus usagés</strong>. Notre mission : transformer ces déchets en meubles modernes, durables et esthétiques.</p>
+    <p>Chaque création est unique et réalisée avec soin. Nous croyons qu’il est possible d’allier <strong>design, confort et écologie</strong>.</p>
+    <p>Rejoignez-nous et découvrez comment un pneu peut renaître en chaise, table ou pouf qui embellira votre intérieur tout en protégeant la planète.</p>
+    <div class="void">
+      <div class="h3"><h3 style="color: #fff5e1;">Entraide et Collecte de pneus</h3></div>
+      <p>
+        Ensemble, donnons une seconde vie aux pneus usés 🌍  
+        <i class="fa-solid fa-earth blue-globe"></i>
+      </p>
+      <p>Confiez-nous vos pneus usés pour leur redonner un second souffle. Ils renaîtront comme le phénix 🔥</p>
+      <p>📞 Contact: +226 61-57-12-86</p>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+<!-- SECTION Fauteuils et chaises -->
+<section id="fauchai" class="content-section hidden">
+  <h2>Nos chaises et fauteuils</h2>
+  
+
+
+
+     <button class="accordion">Chaises</button>
+  <section class="grids-container hidden">
+    <div class="fauteuil"><h3>Nos fauteuils</h3></div>
+    <div class="grids-item"><img src="chaise1234.jpg"></div>
+    <div class="grids-item"><img src="chaise1234.jpg"></div>
+    <div class="grids-item"><img src="chaise2.jpeg"></div>
+    <div class="grids-item"><img src="chaise3.jpeg"></div>
+  </section>
+
+
+  
+  <button class="accordion">Poufs</button>
+  <section class="grids-container hidden">
+    <div class="pouf"><h3></h3></div>
+    <div class="grids-item"><img src="pouf1.jpeg" alt="Pouf recyclé"></div>
+      <div class="grids-item"><img src="pouf1.jpg"></div>
+      <div class="grids-item"><img src="pouf15.webp"></div>
+      <div class="grids-item"><img src="pouf2.jpeg"></div>
+     <div class="grids-item"><img src="pouf3.jpeg"></div>
+         <div class="grids-item"><img src="pour.webp"></div>
+  </section>
+  
+
+
+
+     <button class="accordion">fauteuils</button>
+  <section class="grids-container hidden">
+    <div class="chaise"><h3></h3></div>
+    <div class="grids-item"><img src="fauteuil1.jpeg"></div>
+    <div class="grids-item"><img src="fauteuil123.jpg" ></div>
+    <div class="grids-item"><img src="fauteuil14.webp"></div>
+    <div class="grids-item"><img src="fauteuil31.jpg"></div>
+    <div class="grids-item"><img src="fauteuil3.jpeg"></div>
+  </section>
+
+
+
+
+
+    <button class="accordion">ensembles</button>
+  <section class="grids-container hidden">
+    <div class="ensembles"><h3></h3></div>
+    <div class="grids-item"><img src="ensemble.jpg"></div>
+    <div class="grids-item"><img src="ensemble.webp"></div>
+    <div class="grids-item"><img src="ensemble12.webp"></div>
+    <div class="grids-item"><img src="ensemble1.webp"></div>
+  </section>
+
+
+</section>
+
+
+
+
+
+
+
+<section id="accessoire" class="content-section hidden">
+
+
+
+    <button class="accordion">Jouets</button>
+  <section class="grids-container hidden">
+    <div class="jouet"><h3></h3></div>
+    <div class="grids-item"><img src="jouets.jpeg"></div>
+    <div class="grids-item"><img src="jouets1.jpeg"></div>
+    <div class="grids-item"><img src="manège.webp"></div>
+    </section>
+  
+
+
+    
+
+    <button class="accordion">Étagères</button>
+  <section class="grids-container hidden">
+    <div class="etagere"><h3></h3></div>
+    <div class="grids-item"><img src="etagere1.jpg"></div>
+    <div class="grids-item"><img src="etagere2.jpg"></div>
+  </section>
+
+    <button class="accordion">Miroirs</button>
+  <section class="grids-container hidden">
+    <div class="mirroir"><h3></h3></div>
+    <div class="grids-item"><img src="miroir.png"></div>
+    <div class="grids-item"><img src="miroir12.webp"></div>
+    <div class="grids-item"><img src="miroir2.webp"></div>               
+  </section>
+
+
+
+
+   <!--Niches-->
+  <button class="accordion">Niches</button>
+  <section class="grids-container hidden">
+    <div class="niche"><h3></h3></div>
+    <div class="grids-item"><img src="niches.jpeg"></div>
+    <div class="grids-item"><img src="niches2.jpeg"></div>
+    <div class="grids-item"><img src="niche3.jpeg"></div>
+  </section>
+
+
+
+    <button class="accordion">Tables</button>
+  <section class="grids-container hidden"> 
+    <div class="table"><h3></h3></div>
+
+    <div class="grids-item"><img src="table1.webp"></div>
+     <div class="grids-item"><img src="table12.webp"></div>
+     <div class="grids-item"><img src="table124.webp"></div>
+     <div class="grids-item"><img src="table14.webp"></div>
+    <div class="grids-item"><img src="table15.webp"></div>
+  </section>
+
+
+</section>
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- SECTION COMMANDE -->
+<section id="command" class="content-section hidden">
+  <div class="commande-container">
+    <h2>Passer une commande</h2>
+    <p>Remplissez le formulaire ci-dessous :</p>
+
+    <form class="order-form" action="https://formspree.io/f/mrbaokde" method="POST">
+      <label for="name">Nom :</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="nickname">Prénom(s):</label>
+      <input type="text" id="nickname" name="nickname" required>
+
+      <label for="email">Email :</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="phone">Téléphone :</label>
+
+      <input type="tel" id="phone" name="phone" pattern="[0-9]{8-15}">
+
+      <label for="product">Produit :</label>
+      <select id="product" name="product">
+        <option value="chaise">Chaise</option>
+          <option value="ensemble">Les Ensembles</option>
+        <option value="etageres">Étagère</option>
+        <option value="fauteuil">Fauteuil</option>
+        <option value="jouet">Jouet</option>
+        <option value="miroir">Miroir</option>
+        <option value="niche">Niche</option>
+      <option value="pouf">Pouf</option>
+        <option value="table">Table</option>
+
+        
+      </select>
+
+      <label for="quantity">Quantité :</label>
+      <input type="number" id="quantity" name="quantity" min="1" value="1">
+
+      <label for="details">Détails :</label>
+      <textarea id="details" name="details" rows="4" placeholder="Couleur, taille, personnalisation..."></textarea>
+
+      <label>
+        <input type="checkbox" name="consent" required>
+        J'accepte que mes données soient utilisées pour traiter la commande.
+      </label>
+
+      <div class="actions">
+        <button type="submit">Envoyer par Email</button>
+        <button type="button" class="whatsapp-btn">
+          <i class="fa-brands fa-whatsapp"></i> Envoyer sur WhatsApp
+        </button>
+      </div>
+    </form>
+
+    <!-- Message de confirmation -->
+    <p id="confirmation-message" class="hidden">✅ Votre commande a été envoyée avec succès !</p>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+<!-- SECTION COMPTEUR -->
+<section id="collect" class="content-section hidden" data-aos="fade-up" >
+  <div class="collecte" data-aos="zoom-in">
+    <h3>Pneus collectés</h3>
+    <p><span id="counter">0</span> pneus transformés en meubles</p>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<!-- SECTION TÉMOIGNAGES -->
+<section id="avis" class="content-sectionhidden" data-aos="fade-up">
+  <h2>Ils nous font confiance</h2>
+  <div class="testimonials-container">
+  
+    <div class="testimonial">
+      <img src="client1.jpg" class="client-photo">
+      
+<figure>
+    <blockquote>J'ai commandé un fauteuil en pneu recyclé, et le résultat est incroyable ! C’est beau et solide.</blockquote>
+    <figcaption>— Aïcha, Ouagadougou</figcaption>
+  </figure>
+  </div>
+  
+
+    <div class="testimonial">
+      <figure>
+
+      <img src="client2.jpg" class="client-photo">
+        <blockquote>Une initiative écologique que j’admire. Mes enfants adorent leur pouf fait en pneu.</blockquote>
+      <figcaption>— Mamadou, Bobo-Dioulasso</figcaption>
+      </figure>
+    </div>
+
+    <div class="testimonial">
+      <figure>
+        <img src="jouets.jpeg" class="client-photo">
+        <blockquote>Service rapide et produit unique. Je recommande à 100%.
+        </blockquote>
+      <figcaption>— Fatou, Koudougou</figcaption>
+
+      </figure>
+      
+      
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+<!-- SCRIPTS -->
+<script src="compteur.js"></script>
+<script src="wat.js"></script>
+<script src="accordeon.js"></script>
+<script src="imagemove.js"></script>
+<script src="faufilement.js"></script>
+<script src="main.js"></script>
+<script src="cache.js"></script>
+</body>
+</html>
