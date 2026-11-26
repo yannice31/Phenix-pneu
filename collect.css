@@ -1,0 +1,119 @@
+.collect-section {
+  margin: 32px 0;
+}
+
+.collect-banner {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 24px;
+  align-items: center;
+  background: #f4f9f6;
+  border: 1px solid #d8e8de;
+  border-radius: 18px;
+  padding: 28px;
+}
+
+.collect-badge {
+  display: inline-block;
+  background: #e6f4ea;
+  color: #1e6b38;
+  font-weight: 700;
+  font-size: 0.82rem;
+  padding: 5px 12px;
+  border-radius: 999px;
+  margin-bottom: 10px;
+}
+
+.collect-text h2 {
+  margin: 0 0 10px;
+  font-size: clamp(1.45rem, 3vw, 2rem);
+  color: #1b2a22;
+}
+
+.collect-text p {
+  margin: 0 0 14px;
+  color: #374151;
+  line-height: 1.6;
+}
+
+.collect-points {
+  margin: 0 0 22px;
+  padding-left: 18px;
+  color: #1f2937;
+  line-height: 1.6;
+}
+
+.collect-points li {
+  margin-bottom: 6px;
+}
+
+.collect-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.btn-whatsapp-collect,
+.btn-call-collect {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.btn-whatsapp-collect {
+  background: #25d366;
+  color: #0b2e13;
+}
+
+.btn-call-collect {
+  background: #1b4332;
+  color: #ffffff;
+}
+
+.btn-whatsapp-collect:hover,
+.btn-call-collect:hover {
+  transform: translateY(-2px);
+  opacity: 0.95;
+}
+
+.collect-stats-card {
+  background: #1b4332;
+  color: #ffffff;
+  border-radius: 16px;
+  padding: 26px 20px;
+  text-align: center;
+  box-shadow: 0 10px 24px rgba(27, 67, 50, 0.16);
+}
+
+.collect-stat-label {
+  margin: 0 0 8px;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #b7e4c7;
+}
+
+.collect-stat-number {
+  margin: 0 0 8px;
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.collect-stat-sub {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #d8f3dc;
+}
+
+@media (max-width: 820px) {
+  .collect-banner {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+}
