@@ -1,26 +1,32 @@
 document.addEventListener("DOMContentLoaded", () => {
   const phone = "22664682596";
-
-  // 1. Formulaire de commande existant
   const waBtn = document.querySelector(".whatsapp-btn");
   const form = document.querySelector(".order-form");
 
+  const clean = (val, fallback = "-") => {
+    const str = String(val ?? "").trim();
+    return str.length ? str : fallback;
+  };
+
+  // 1. Envoi via le bouton WhatsApp du formulaire
   if (waBtn && form) {
     waBtn.addEventListener("click", (e) => {
       e.preventDefault();
       const formValues = Object.fromEntries(new FormData(form));
+
       const message = [
-        "Commande :",
-        `Nom: ${formValues.name || "-"}`,
-        `Prénom: ${formValues.nickname || "-"}`,
-        `Email: ${formValues.email || "-"}`,
-        `Numéro: ${formValues.phone || "-"}`,
-        `Produit: ${formValues.product || "-"}`,
-        `Quantité: ${formValues.quantity || 1}`,
-        `Détails: ${formValues.details || "-"}`
+        "Commande Phénix-pneu :",
+        `Nom : ${clean(formValues.name)}`,
+        `Prénom : ${clean(formValues.nickname)}`,
+        `Email : ${clean(formValues.email)}`,
+        `Numéro : ${clean(formValues.phone)}`,
+        `Produit : ${clean(formValues.product)}`,
+        `Quantité : ${clean(formValues.quantity, "1")}`,
+        `Détails : ${clean(formValues.details)}`
       ].join("\n");
 
-      window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
+      const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+      window.open(url, "_blank", "noopener,noreferrer");
     });
   }
 
@@ -31,10 +37,13 @@ document.addEventListener("DOMContentLoaded", () => {
     img.style.cursor = "pointer";
     img.title = "Cliquer pour commander ce produit sur WhatsApp";
 
-    img.addEventListener("click", () => {
-      const productName = img.getAttribute("data-name") || img.alt || "Meuble recyclé";
-      const productPrice = img.getAttribute("data-price") || "Sur demande";
-      const imageUrl = img.src; // URL complète de l'image
+    img.addEventListener("click", (e) => {
+      const parentLink = img.closest("a");
+      if (parentLink) e.preventDefault();
+
+      const productName = clean(img.getAttribute("data-name") || img.alt, "Meuble recyclé");
+      const productPrice = clean(img.getAttribute("data-price"), "Sur demande");
+      const imageUrl = img.src;
 
       const message = [
         "Bonjour Phénix-pneu, je suis intéressé(e) par ce produit :",
