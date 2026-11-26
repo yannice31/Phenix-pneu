@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!form) return;
 
-  const FORMSPREE_URL = form.getAttribute("action") || "https://formspree.io/f/mrbaokde";
+  const FORMSPREE_URL = form.getAttribute("action") || "https://formspree.io/f/xkjryyov";
   const texteBoutonInitial = submitBtn ? submitBtn.textContent.trim() : "Envoyer par Email";
 
   function afficherMessage(texte, estErreur = false) {
