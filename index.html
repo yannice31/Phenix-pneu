@@ -7,13 +7,13 @@
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://phenix-pneu-3.onrender.com/">
   <!-- Aperçu réseaux sociaux & WhatsApp (Open Graph) -->
-<meta property="og:type" content="website">
-<meta property="og:locale" content="fr_FR">
-<meta property="og:site_name" content="Phénix Pneu">
-<meta property="og:title" content="Phénix Pneu – Mobilier recyclé & écologique">
-<meta property="og:description" content="Fauteuils, chaises, poufs, tables et créations durables faits main à partir de pneus usagés à Ouagadougou.">
-<meta property="og:url" content="https://phenix-pneu-3.onrender.com/">
-<meta property="og:image" content="https://phenix-pneu-3.onrender.com/logos.webp">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Phénix Pneu">
+  <meta property="og:title" content="Phénix Pneu – Mobilier recyclé & écologique">
+  <meta property="og:description" content="Fauteuils, chaises, poufs, tables et créations durables faits main à partir de pneus usagés à Ouagadougou.">
+  <meta property="og:url" content="https://phenix-pneu-3.onrender.com/">
+  <meta property="og:image" content="https://phenix-pneu-3.onrender.com/logos.webp">
 
   <title>Phénix Pneu – Mobilier recyclé &amp; écologique</title>
   <link rel="stylesheet" href="style.css">
@@ -32,25 +32,25 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "Phénix Pneu",
-  "description": "Fabrication artisanale de mobilier, poufs, fauteuils, tables et objets déco en pneus recyclés.",
-  "telephone": "+22664682596",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Ouagadougou",
-    "addressCountry": "BF"
-  },
-  "areaServed": {
-    "@type": "Country",
-    "name": "Burkina Faso"
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Phénix Pneu",
+    "description": "Fabrication artisanale de mobilier, poufs, fauteuils, tables et objets déco en pneus recyclés.",
+    "telephone": "+22664682596",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Ouagadougou",
+      "addressCountry": "BF"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "Burkina Faso"
+    }
   }
-}
-</script>
-<meta name="google-site-verification" content="VotTMJYK_RXSToL6lxqWi2GasUoD4f6AP_zHmVuteXg" />
+  </script>
+  <meta name="google-site-verification" content="VotTMJYK_RXSToL6lxqWi2GasUoD4f6AP_zHmVuteXg" />
 </head>
 <body>
 
@@ -71,6 +71,12 @@
         <a href="#avis" data-section="avis">Avis</a>
       </div>
     </div>
+
+    <button type="button" id="cart-open-btn" class="cart-nav-btn" aria-label="Ouvrir le panier">
+      <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>
+      <span>Panier</span>
+      <span id="cart-badge" class="cart-badge">0</span>
+    </button>
 
     <button
       type="button"
@@ -97,7 +103,7 @@
     </p>
     <div class="hero-cta">
       <a href="#catalogue" class="btn-primary" data-section="catalogue">Découvrir les créations</a>
-      <a href="#command"   class="btn-secondary" data-section="command">Passer une commande</a>
+      <a href="#command" class="btn-secondary" data-section="command">Passer une commande</a>
     </div>
   </div>
 </section>
@@ -128,13 +134,13 @@
 <!-- APERÇU PRIX & MODÈLES VEDETTES -->
 <section class="slidy content-section active">
   <h2>Modèles phares &amp; repères de prix</h2>
-  <p>Cliquez sur les images pour consulter les repères de prix.</p>
+  <p>Cliquez sur une image pour ajouter au panier ou commander via formulaire ou WhatsApp.</p>
 
   <div class="slider-container active">
     <div class="slider">
       <div class="slide"><img src="ensemble5.webp" alt="Création en pneu recyclé" data-price="Sur devis"></div>
-      <div class="slide"><img src="etagere2.jpg" alt="Chaise en pneu recyclé" data-price="Sur devis"></div>
-      <div class="slide"><img src="ensemble 1.jpg" alt="Chaise recyclée finition soignée" data-price="Sur devis"></div>
+      <div class="slide"><img src="etagere2.jpg" alt="Etagere en pneu recyclé" data-price="Sur devis"></div>
+      <div class="slide"><img src="ensemble 1.jpg" alt="Ensemble de fauteuils pour salon en pneu recyclé" data-price="Sur devis"></div>
       <div class="slide"><img src="fauteuil1.jpeg" alt="Fauteuil en pneu recyclé" data-price="Sur devis"></div>
       <div class="slide"><img src="fauteuil2.jpeg" alt="Fauteuil design en pneu recyclé" data-price="Sur devis"></div>
       <div class="slide"><img src="ensemble8.webp" alt="Ensemble salon en pneu recyclé" data-price="Sur devis"></div>
@@ -154,7 +160,7 @@
 <!-- SECTION CATALOGUE FILTRABLE -->
 <section id="catalogue" class="content-section">
   <h2>Nos créations en pneu recyclé</h2>
-  <p>Filtrez par catégorie et cliquez sur « Commander ce modèle » pour pré-remplir votre demande.</p>
+  <p>Filtrez par catégorie et cliquez sur un modèle ou sur les boutons d'action rapide.</p>
 
   <div class="filter-bar" role="group" aria-label="Filtrer les produits par catégorie">
     <button type="button" class="filter-btn active" data-filter="all">Tout</button>
@@ -173,7 +179,11 @@
       <div class="product-info">
         <h3>Fauteuil Lounge Phénix</h3>
         <p class="price">Sur devis</p>
-        <button type="button" class="order-quick-btn">Commander ce modèle</button>
+        <div class="product-actions">
+          <button type="button" class="btn-add-cart">+ Panier</button>
+          <button type="button" class="btn-form-order">Formulaire</button>
+          <button type="button" class="btn-wa-order">WhatsApp</button>
+        </div>
       </div>
     </article>
 
@@ -184,7 +194,11 @@
       <div class="product-info">
         <h3>Chaise Atelier</h3>
         <p class="price">Sur devis</p>
-        <button type="button" class="order-quick-btn">Commander ce modèle</button>
+        <div class="product-actions">
+          <button type="button" class="btn-add-cart">+ Panier</button>
+          <button type="button" class="btn-form-order">Formulaire</button>
+          <button type="button" class="btn-wa-order">WhatsApp</button>
+        </div>
       </div>
     </article>
 
@@ -196,10 +210,15 @@
       <div class="product-info">
         <h3>Pouf Confort</h3>
         <p class="price">Sur devis</p>
-        <button type="button" class="order-quick-btn">Commander ce modèle</button>
+        <div class="product-actions">
+          <button type="button" class="btn-add-cart">+ Panier</button>
+          <button type="button" class="btn-form-order">Formulaire</button>
+          <button type="button" class="btn-wa-order">WhatsApp</button>
+        </div>
       </div>
     </article>
-        <article class="product-card" data-category="pouf" data-product-value="pouf">
+
+    <article class="product-card" data-category="pouf" data-product-value="pouf">
       <div class="product-img-wrapper">
         <span class="badge">Populaire</span>
         <img src="pouf2.jpeg" alt="Pouf en pneu recyclé" loading="lazy">
@@ -207,10 +226,15 @@
       <div class="product-info">
         <h3>Pouf Confort</h3>
         <p class="price">Sur devis</p>
-        <button type="button" class="order-quick-btn">Commander ce modèle</button>
+        <div class="product-actions">
+          <button type="button" class="btn-add-cart">+ Panier</button>
+          <button type="button" class="btn-form-order">Formulaire</button>
+          <button type="button" class="btn-wa-order">WhatsApp</button>
+        </div>
       </div>
     </article>
-        <article class="product-card" data-category="pouf" data-product-value="pouf">
+
+    <article class="product-card" data-category="pouf" data-product-value="pouf">
       <div class="product-img-wrapper">
         <span class="badge">Populaire</span>
         <img src="pouf3.jpeg" alt="Pouf en pneu recyclé" loading="lazy">
@@ -218,10 +242,15 @@
       <div class="product-info">
         <h3>Pouf Confort</h3>
         <p class="price">Sur devis</p>
-        <button type="button" class="order-quick-btn">Commander ce modèle</button>
+        <div class="product-actions">
+          <button type="button" class="btn-add-cart">+ Panier</button>
+          <button type="button" class="btn-form-order">Formulaire</button>
+          <button type="button" class="btn-wa-order">WhatsApp</button>
+        </div>
       </div>
     </article>
-        <article class="product-card" data-category="pouf" data-product-value="pouf">
+
+    <article class="product-card" data-category="pouf" data-product-value="pouf">
       <div class="product-img-wrapper">
         <span class="badge">Populaire</span>
         <img src="pouf4.webp" alt="Pouf en pneu recyclé" loading="lazy">
@@ -229,16 +258,15 @@
       <div class="product-info">
         <h3>Pouf Confort</h3>
         <p class="price">Sur devis</p>
-        <button type="button" class="order-quick-btn">Commander ce modèle</button>
+        <div class="product-actions">
+          <button type="button" class="btn-add-cart">+ Panier</button>
+          <button type="button" class="btn-form-order">Formulaire</button>
+          <button type="button" class="btn-wa-order">WhatsApp</button>
+        </div>
       </div>
     </article>
 
-
-                                        <!--TABLES-->
-
-
-
-
+    <!-- TABLES -->
     <article class="product-card" data-category="table" data-product-value="table">
       <div class="product-img-wrapper">
         <img src="table1.webp" alt="Table basse en pneu recyclé" loading="lazy">
@@ -246,9 +274,14 @@
       <div class="product-info">
         <h3>Table Basse Design</h3>
         <p class="price">Sur devis</p>
-        <button type="button" class="order-quick-btn">Commander ce modèle</button>
+        <div class="product-actions">
+          <button type="button" class="btn-add-cart">+ Panier</button>
+          <button type="button" class="btn-form-order">Formulaire</button>
+          <button type="button" class="btn-wa-order">WhatsApp</button>
+        </div>
       </div>
     </article>
+
     <article class="product-card" data-category="table" data-product-value="table">
       <div class="product-img-wrapper">
         <img src="table2.webp" alt="Table basse en pneu recyclé" loading="lazy">
@@ -256,9 +289,14 @@
       <div class="product-info">
         <h3>Table Basse Design</h3>
         <p class="price">Sur devis</p>
-        <button type="button" class="order-quick-btn">Commander ce modèle</button>
+        <div class="product-actions">
+          <button type="button" class="btn-add-cart">+ Panier</button>
+          <button type="button" class="btn-form-order">Formulaire</button>
+          <button type="button" class="btn-wa-order">WhatsApp</button>
+        </div>
       </div>
     </article>
+
     <article class="product-card" data-category="table" data-product-value="table">
       <div class="product-img-wrapper">
         <img src="table3.webp" alt="Table basse en pneu recyclé" loading="lazy">
@@ -266,9 +304,14 @@
       <div class="product-info">
         <h3>Table Basse Design</h3>
         <p class="price">Sur devis</p>
-        <button type="button" class="order-quick-btn">Commander ce modèle</button>
+        <div class="product-actions">
+          <button type="button" class="btn-add-cart">+ Panier</button>
+          <button type="button" class="btn-form-order">Formulaire</button>
+          <button type="button" class="btn-wa-order">WhatsApp</button>
+        </div>
       </div>
     </article>
+
     <article class="product-card" data-category="table" data-product-value="table">
       <div class="product-img-wrapper">
         <img src="table4.webp" alt="Table basse en pneu recyclé" loading="lazy">
@@ -276,9 +319,14 @@
       <div class="product-info">
         <h3>Table Basse Design</h3>
         <p class="price">Sur devis</p>
-        <button type="button" class="order-quick-btn">Commander ce modèle</button>
+        <div class="product-actions">
+          <button type="button" class="btn-add-cart">+ Panier</button>
+          <button type="button" class="btn-form-order">Formulaire</button>
+          <button type="button" class="btn-wa-order">WhatsApp</button>
+        </div>
       </div>
     </article>
+
     <article class="product-card" data-category="table" data-product-value="table">
       <div class="product-img-wrapper">
         <img src="table5.webp" alt="Table basse en pneu recyclé" loading="lazy">
@@ -286,9 +334,14 @@
       <div class="product-info">
         <h3>Table Basse Design</h3>
         <p class="price">Sur devis</p>
-        <button type="button" class="order-quick-btn">Commander ce modèle</button>
+        <div class="product-actions">
+          <button type="button" class="btn-add-cart">+ Panier</button>
+          <button type="button" class="btn-form-order">Formulaire</button>
+          <button type="button" class="btn-wa-order">WhatsApp</button>
+        </div>
       </div>
     </article>
+
     <article class="product-card" data-category="table" data-product-value="table">
       <div class="product-img-wrapper">
         <img src="table6.webp" alt="Table basse en pneu recyclé" loading="lazy">
@@ -296,9 +349,14 @@
       <div class="product-info">
         <h3>Table Basse Design</h3>
         <p class="price">Sur devis</p>
-        <button type="button" class="order-quick-btn">Commander ce modèle</button>
+        <div class="product-actions">
+          <button type="button" class="btn-add-cart">+ Panier</button>
+          <button type="button" class="btn-form-order">Formulaire</button>
+          <button type="button" class="btn-wa-order">WhatsApp</button>
+        </div>
       </div>
     </article>
+
     <article class="product-card" data-category="table" data-product-value="table">
       <div class="product-img-wrapper">
         <img src="table7.webp" alt="Table basse en pneu recyclé" loading="lazy">
@@ -306,12 +364,13 @@
       <div class="product-info">
         <h3>Table Basse Design</h3>
         <p class="price">Sur devis</p>
-        <button type="button" class="order-quick-btn">Commander ce modèle</button>
+        <div class="product-actions">
+          <button type="button" class="btn-add-cart">+ Panier</button>
+          <button type="button" class="btn-form-order">Formulaire</button>
+          <button type="button" class="btn-wa-order">WhatsApp</button>
+        </div>
       </div>
     </article>
-
-
-
 
     <article class="product-card" data-category="table" data-product-value="ensemble">
       <div class="product-img-wrapper">
@@ -320,85 +379,118 @@
       <div class="product-info">
         <h3>Ensemble Salon Complet</h3>
         <p class="price">Sur devis</p>
-        <button type="button" class="order-quick-btn">Commander ce modèle</button>
+        <div class="product-actions">
+          <button type="button" class="btn-add-cart">+ Panier</button>
+          <button type="button" class="btn-form-order">Formulaire</button>
+          <button type="button" class="btn-wa-order">WhatsApp</button>
+        </div>
       </div>
     </article>
-     <article class="product-card" data-category="table" data-product-value="ensemble">
+
+    <article class="product-card" data-category="table" data-product-value="ensemble">
       <div class="product-img-wrapper">
         <img src="ensemble2.jpg" alt="Ensemble salon en pneu recyclé" loading="lazy">
       </div>
       <div class="product-info">
         <h3>Ensemble Salon Complet</h3>
         <p class="price">Sur devis</p>
-        <button type="button" class="order-quick-btn">Commander ce modèle</button>
+        <div class="product-actions">
+          <button type="button" class="btn-add-cart">+ Panier</button>
+          <button type="button" class="btn-form-order">Formulaire</button>
+          <button type="button" class="btn-wa-order">WhatsApp</button>
+        </div>
       </div>
     </article>
-     <article class="product-card" data-category="table" data-product-value="ensemble">
+
+    <article class="product-card" data-category="table" data-product-value="ensemble">
       <div class="product-img-wrapper">
         <img src="ensemble3.webp" alt="Ensemble salon en pneu recyclé" loading="lazy">
       </div>
       <div class="product-info">
         <h3>Ensemble Salon Complet</h3>
         <p class="price">Sur devis</p>
-        <button type="button" class="order-quick-btn">Commander ce modèle</button>
+        <div class="product-actions">
+          <button type="button" class="btn-add-cart">+ Panier</button>
+          <button type="button" class="btn-form-order">Formulaire</button>
+          <button type="button" class="btn-wa-order">WhatsApp</button>
+        </div>
       </div>
     </article>
-     <article class="product-card" data-category="table" data-product-value="ensemble">
+
+    <article class="product-card" data-category="table" data-product-value="ensemble">
       <div class="product-img-wrapper">
         <img src="ensemble4.webp" alt="Ensemble salon en pneu recyclé" loading="lazy">
       </div>
       <div class="product-info">
         <h3>Ensemble Salon Complet</h3>
         <p class="price">Sur devis</p>
-        <button type="button" class="order-quick-btn">Commander ce modèle</button>
+        <div class="product-actions">
+          <button type="button" class="btn-add-cart">+ Panier</button>
+          <button type="button" class="btn-form-order">Formulaire</button>
+          <button type="button" class="btn-wa-order">WhatsApp</button>
+        </div>
       </div>
     </article>
-     <article class="product-card" data-category="table" data-product-value="ensemble">
+
+    <article class="product-card" data-category="table" data-product-value="ensemble">
       <div class="product-img-wrapper">
         <img src="ensemble5.webp" alt="Ensemble salon en pneu recyclé" loading="lazy">
       </div>
       <div class="product-info">
         <h3>Ensemble Salon Complet</h3>
         <p class="price">Sur devis</p>
-        <button type="button" class="order-quick-btn">Commander ce modèle</button>
+        <div class="product-actions">
+          <button type="button" class="btn-add-cart">+ Panier</button>
+          <button type="button" class="btn-form-order">Formulaire</button>
+          <button type="button" class="btn-wa-order">WhatsApp</button>
+        </div>
       </div>
     </article>
-     <article class="product-card" data-category="table" data-product-value="ensemble">
+
+    <article class="product-card" data-category="table" data-product-value="ensemble">
       <div class="product-img-wrapper">
         <img src="ensemble6.jpg" alt="Ensemble salon en pneu recyclé" loading="lazy">
       </div>
       <div class="product-info">
         <h3>Ensemble Salon Complet</h3>
         <p class="price">Sur devis</p>
-        <button type="button" class="order-quick-btn">Commander ce modèle</button>
+        <div class="product-actions">
+          <button type="button" class="btn-add-cart">+ Panier</button>
+          <button type="button" class="btn-form-order">Formulaire</button>
+          <button type="button" class="btn-wa-order">WhatsApp</button>
+        </div>
       </div>
     </article>
-     <article class="product-card" data-category="table" data-product-value="ensemble">
+
+    <article class="product-card" data-category="table" data-product-value="ensemble">
       <div class="product-img-wrapper">
         <img src="ensemble7.jpg" alt="Ensemble salon en pneu recyclé" loading="lazy">
       </div>
       <div class="product-info">
         <h3>Ensemble Salon Complet</h3>
         <p class="price">Sur devis</p>
-        <button type="button" class="order-quick-btn">Commander ce modèle</button>
+        <div class="product-actions">
+          <button type="button" class="btn-add-cart">+ Panier</button>
+          <button type="button" class="btn-form-order">Formulaire</button>
+          <button type="button" class="btn-wa-order">WhatsApp</button>
+        </div>
       </div>
     </article>
-     <article class="product-card" data-category="table" data-product-value="ensemble">
+
+    <article class="product-card" data-category="table" data-product-value="ensemble">
       <div class="product-img-wrapper">
         <img src="ensemble8.webp" alt="Ensemble salon en pneu recyclé" loading="lazy">
       </div>
       <div class="product-info">
         <h3>Ensemble Salon Complet</h3>
         <p class="price">Sur devis</p>
-        <button type="button" class="order-quick-btn">Commander ce modèle</button>
+        <div class="product-actions">
+          <button type="button" class="btn-add-cart">+ Panier</button>
+          <button type="button" class="btn-form-order">Formulaire</button>
+          <button type="button" class="btn-wa-order">WhatsApp</button>
+        </div>
       </div>
     </article>
-
-
-
-
-
-
 
     <article class="product-card" data-category="jouet" data-product-value="jouet">
       <div class="product-img-wrapper">
@@ -408,9 +500,14 @@
       <div class="product-info">
         <h3>Jeu &amp; Balançoire Pneu</h3>
         <p class="price">Sur devis</p>
-        <button type="button" class="order-quick-btn">Commander ce modèle</button>
+        <div class="product-actions">
+          <button type="button" class="btn-add-cart">+ Panier</button>
+          <button type="button" class="btn-form-order">Formulaire</button>
+          <button type="button" class="btn-wa-order">WhatsApp</button>
+        </div>
       </div>
     </article>
+
     <article class="product-card" data-category="jouet" data-product-value="jouet">
       <div class="product-img-wrapper">
         <span class="badge">Enfants</span>
@@ -419,26 +516,20 @@
       <div class="product-info">
         <h3>Jeu &amp; Balançoire Pneu</h3>
         <p class="price">Sur devis</p>
-        <button type="button" class="order-quick-btn">Commander ce modèle</button>
+        <div class="product-actions">
+          <button type="button" class="btn-add-cart">+ Panier</button>
+          <button type="button" class="btn-form-order">Formulaire</button>
+          <button type="button" class="btn-wa-order">WhatsApp</button>
+        </div>
       </div>
     </article>
-
-
-
-
-
-
-  
- 
-
-  </div> <!-- fin de .products-grid -->
+  </div>
 
   <div class="catalogue-more-wrapper">
     <button type="button" id="load-more-btn" class="load-more-btn hidden">
       Voir plus de modèles
     </button>
   </div>
-</section>
 </section>
 
 <!-- SECTION À PROPOS -->
@@ -585,7 +676,7 @@
     </div>
   </div>
 
-<!-- Formulaire pour laisser un avis -->
+  <!-- Formulaire pour laisser un avis -->
   <div class="avis-form-box">
     <h3>Laisser un avis</h3>
     <p>Vous avez acheté ou testé une création Phénix Pneu ? Partagez votre retour.</p>
@@ -627,7 +718,6 @@
       <p id="avis-feedback" class="avis-feedback hidden">Merci ! Votre avis a bien été ajouté.</p>
     </form>
   </div>
-  
 </section>
 
 <!-- PIED DE PAGE (FOOTER) -->
@@ -678,17 +768,81 @@
   </div>
 </footer>
 
+<div id="productModal" class="product-modal hidden" aria-hidden="true">
+  <div class="product-modal__backdrop" data-close-modal></div>
+  <div class="product-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="modalProductTitle">
+    <button type="button" class="product-modal__close" data-close-modal aria-label="Fermer">×</button>
+    <div class="product-modal__media">
+      <img id="modalProductImg" src="" alt="" title="Cliquer pour agrandir">
+    </div>
+    <div class="product-modal__body">
+      <span id="modalProductMeta" class="product-modal__meta"></span>
+      <h3 id="modalProductTitle"></h3>
+      <p id="modalProductPrice" class="product-modal__price"></p>
+      <p id="modalProductDesc" class="product-modal__desc"></p>
+
+      <div class="product-modal__qty">
+        <label for="modalProductQty">Quantité :</label>
+        <input id="modalProductQty" type="number" min="1" value="1">
+      </div>
+
+      <div class="product-modal__note">
+        <label for="modalProductNote">Finition / Couleur / Quartier :</label>
+        <input id="modalProductNote" type="text" placeholder="Ex : Assise noire, Ouagadougou...">
+      </div>
+
+      <div class="product-modal__actions">
+        <button type="button" id="modalAddCartBtn" class="btn-add-cart">+ Ajouter au panier</button>
+        <button type="button" id="modalFormBtn" class="secondary-btn">Commander via Formulaire</button>
+        <button type="button" id="modalWaBtn" class="whatsapp-btn">
+          <i class="fa-brands fa-whatsapp"></i> Commander sur WhatsApp
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="modalImageZoom" class="image-zoom-overlay hidden" role="dialog" aria-modal="true" aria-label="Aperçu agrandi du produit">
+  <button type="button" id="closeModalZoom" class="image-zoom-close" aria-label="Fermer l'aperçu">×</button>
+  <img id="modalImageZoomImg" src="" alt="">
+</div>
+
+<aside id="cart-drawer" class="cart-drawer hidden" aria-label="Panier Phénix-pneu">
+  <div id="cart-backdrop" class="cart-backdrop"></div>
+  <div class="cart-panel" role="dialog" aria-modal="true" aria-labelledby="cart-title">
+    <div class="cart-header">
+      <h3 id="cart-title">Votre sélection Phénix-pneu</h3>
+      <button type="button" id="cart-close-btn" class="cart-close-btn" aria-label="Fermer le panier">×</button>
+    </div>
+
+    <div id="cart-items" class="cart-items"></div>
+
+    <div class="cart-footer">
+      <div class="cart-total-row">
+        <span>Total estimé :</span>
+        <strong id="cart-total">0 FCFA</strong>
+      </div>
+      <div class="cart-actions">
+        <button type="button" id="cart-form-btn" class="btn-form-order">
+          Commander via Formulaire
+        </button>
+        <button type="button" id="cart-wa-btn" class="btn-wa-order">
+          <i class="fa-brands fa-whatsapp"></i> Commander sur WhatsApp
+        </button>
+      </div>
+      <button type="button" id="cart-clear-btn" class="cart-clear-btn">Vider le panier</button>
+    </div>
+  </div>
+</aside>
+
 <!-- SCRIPTS -->
-
-<script src="wat.js"></script>
-
-<script src="imagemove.js"></script>
-<script src="faufilement.js"></script>
-
-<script src="cache.js"></script>
-<script src="catfil.js"></script>
-<script src="menu_mobbile.js"></script>
-<script src="commande_fetch.js"></script>
-<script src="slidy.js"></script>
+<script src="cache.js" defer></script>
+<script src="menu_mobbile.js" defer></script>
+<script src="faufilement.js" defer></script>
+<script src="imagemove.js" defer></script>
+<script src="catfil.js" defer></script>
+<script src="slidy.js" defer></script>
+<script src="wat.js" defer></script>
+<script src="commande_fetch.js" defer></script>
 </body>
 </html>

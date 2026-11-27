@@ -1,77 +1,32 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const orderSection = document.getElementById("command");
-  const form = orderSection
-    ? orderSection.querySelector(".order-form")
-    : document.querySelector(".order-form");
-  const confirmationEl = document.getElementById("confirmation-message");
-  const submitBtn = form ? form.querySelector('button[type="submit"]') : null;
-  const formLoadedAt = Date.now();
-  const MIN_SUBMIT_DELAY_MS = 2000; // 2 secondes minimum pour éviter les soumissions instantanées de robots
+  const form = document.querySelector(".order-form");
+  const confirmationMsg = document.getElementById("confirmation-message");
+  const counter = document.getElementById("counter");
+  const CART_STORAGE_KEY = "phenix_pneu_cart_v1";
 
   if (!form) return;
 
-  const FORMSPREE_URL = form.getAttribute("action") || "https://formspree.io/f/xkjryyov";
-  const texteBoutonInitial = submitBtn ? submitBtn.textContent.trim() : "Envoyer par Email";
-
-  function afficherMessage(texte, estErreur = false) {
-    if (!confirmationEl) return;
-    confirmationEl.textContent = texte;
-    confirmationEl.style.color = estErreur ? "#b91c1c" : "#1e6b38";
-    confirmationEl.classList.remove("hidden");
+  if (counter) {
+    fetch("Compteur.json", { cache: "no-store" })
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (data && typeof data.totalCommandes !== "undefined") {
+          counter.textContent = data.totalCommandes;
+        }
+      })
+      .catch(() => {});
   }
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    if (!form.checkValidity()) {
-      form.reportValidity();
-      return;
-    }
+    if (!form.reportValidity()) return;
 
-    const formData = new FormData(form);
-    const gotchaValue = String(formData.get("_gotcha") || "").trim();
-    const elapsedMs = Date.now() - formLoadedAt;
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalText = submitBtn ? submitBtn.textContent : "";
 
-    // Anti-spam : si le champ piège est rempli ou si l'envoi est trop rapide (< 2s)
-    if (gotchaValue !== "" || elapsedMs < MIN_SUBMIT_DELAY_MS) {
-      form.reset();
-      const quantiteInput = document.getElementById("quantity");
-      if (quantiteInput) {
-        quantiteInput.value = "1";
-      }
-      afficherMessage(
-        "✅ Votre commande a été envoyée avec succès ! Nous vous contacterons rapidement.",
-        false
-      );
-      return;
-    }
-
-    const produitSelect = document.getElementById("product");
-    const produitLibelle =
-      produitSelect && produitSelect.selectedOptions.length > 0
-        ? produitSelect.selectedOptions[0].textContent.trim()
-        : formData.get("product");
-
-    const nomClient = String(formData.get("name") || "").trim();
-    const prenomsClient = String(formData.get("nickname") || "").trim();
-    const nomComplet = prenomsClient ? `${prenomsClient} ${nomClient}` : nomClient;
-
-    const payload = {
-      _subject: `Nouvelle commande Phénix Pneu — ${produitLibelle} (${nomComplet})`,
-      _gotcha: gotchaValue,
-      type_formulaire: "Commande",
-      nom: nomClient,
-      prenoms: prenomsClient,
-      email: String(formData.get("email") || "").trim(),
-      telephone: String(formData.get("phone") || "").trim(),
-      produit_valeur: String(formData.get("product") || "").trim(),
-      produit: String(produitLibelle || "").trim(),
-      quantite: String(formData.get("quantity") || "1").trim(),
-      details: String(formData.get("details") || "").trim(),
-    };
-
-    if (confirmationEl) {
-      confirmationEl.classList.add("hidden");
+    if (confirmationMsg) {
+      confirmationMsg.classList.add("hidden");
     }
 
     if (submitBtn) {
@@ -80,44 +35,35 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     try {
-      const response = await fetch(FORMSPREE_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(payload),
+      const formData = new FormData(form);
+      const response = await fetch(form.action, {
+        method: form.method || "POST",
+        body: formData,
+        headers: { Accept: "application/json" }
       });
 
-      const data = await response.json().catch(() => ({}));
-
       if (!response.ok) {
-        const messageErreur =
-          data && Array.isArray(data.errors) && data.errors.length > 0
-            ? data.errors.map((err) => err.message).join(", ")
-            : "Erreur lors de l'envoi de la commande.";
-        throw new Error(messageErreur);
+        throw new Error(`Erreur HTTP ${response.status}`);
       }
+
+      if (confirmationMsg) {
+        confirmationMsg.textContent = "✅ Votre commande a été envoyée avec succès !";
+        confirmationMsg.classList.remove("hidden");
+      }
+
+      try {
+        localStorage.removeItem(CART_STORAGE_KEY);
+      } catch (_) {}
 
       form.reset();
-      const quantiteInput = document.getElementById("quantity");
-      if (quantiteInput) {
-        quantiteInput.value = "1";
-      }
-
-      afficherMessage(
-        "✅ Votre commande a été envoyée avec succès ! Nous vous contacterons rapidement.",
-        false
-      );
-    } catch (error) {
-      afficherMessage(
-        "❌ L'envoi a échoué. Vérifiez votre connexion ou utilisez le bouton WhatsApp.",
-        true
+    } catch (_) {
+      alert(
+        "Une erreur est survenue lors de l'envoi du formulaire. Vous pouvez aussi envoyer votre demande directement sur WhatsApp."
       );
     } finally {
       if (submitBtn) {
         submitBtn.disabled = false;
-        submitBtn.textContent = texteBoutonInitial;
+        submitBtn.textContent = originalText;
       }
     }
   });

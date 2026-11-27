@@ -1,10 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
   const filterButtons = document.querySelectorAll(".filter-btn");
   const productCards = Array.from(document.querySelectorAll(".product-card"));
-  const quickOrderButtons = document.querySelectorAll(".order-quick-btn");
   const loadMoreBtn = document.getElementById("load-more-btn");
 
-  const numeroWhatsApp = "22661571286";
   const LIMITE_DEFAUT_TOUT = 6;
 
   let categorieActive = "all";
@@ -50,12 +48,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // 1. Filtrage par catégorie
   filterButtons.forEach((button) => {
     button.addEventListener("click", () => {
       categorieActive = button.dataset.filter || "all";
 
-      // Quand on revient sur "Tout", on réinitialise à 6 modèles par défaut
       if (categorieActive === "all") {
         afficherTousEnModeTout = false;
       }
@@ -67,13 +63,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // 2. Bouton "Voir plus / Voir moins" dans l'onglet "Tout"
   if (loadMoreBtn) {
     loadMoreBtn.addEventListener("click", () => {
       afficherTousEnModeTout = !afficherTousEnModeTout;
       mettreAJourAffichage();
 
-      // Si on replie la liste, on remonte doucement vers le haut du catalogue
       if (!afficherTousEnModeTout) {
         document
           .getElementById("catalogue")
@@ -82,36 +76,5 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // 3. Redirection directe vers WhatsApp avec le lien de l'image
-  quickOrderButtons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const card = btn.closest(".product-card");
-      if (!card) return;
-
-      const modelTitle =
-        card.querySelector("h3")?.textContent.trim() || "Modèle Phénix Pneu";
-      const modelPrice =
-        card.querySelector(".price")?.textContent.trim() || "Sur devis";
-      const imgElement = card.querySelector("img");
-      const imageUrl = imgElement ? imgElement.src : "";
-
-      const lignes = [
-        "Bonjour *Phénix Pneu*, je souhaite commander ce modèle :",
-        "",
-        `• *Modèle :* ${modelTitle}`,
-        `• *Prix affiché :* ${modelPrice}`,
-        imageUrl ? `• *Photo du modèle :* ${imageUrl}` : null,
-        "",
-        "Pouvez-vous me confirmer la disponibilité et le délai de livraison ?",
-      ].filter(Boolean);
-
-      const message = lignes.join("\n");
-      const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(message)}`;
-
-      window.open(urlWhatsApp, "_blank", "noopener,noreferrer");
-    });
-  });
-
-  // Affichage initial au chargement de la page
   mettreAJourAffichage();
 });

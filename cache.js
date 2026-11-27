@@ -1,78 +1,87 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const contentSections = document.querySelectorAll(".content-section");
-  const accueilSections = [
-    document.getElementById("home"),
-    document.getElementById("highlights"),
-    document.querySelector(".presentation"),
-    document.querySelector(".pre"),
-    document.querySelector(".slidy")
-  ];
+  const navTriggers = Array.from(document.querySelectorAll("[data-section]"));
+  const allSections = Array.from(document.querySelectorAll(".content-section"));
 
-  function hideEverything() {
-    contentSections.forEach((sec) => {
-      sec.classList.remove("active");
-      sec.classList.add("hidden");
+  // Groupe de sections affichées ensemble quand on clique sur "Accueil" (#home)
+  const homeGroupIds = ["home", "highlights"];
+  const homeGroupClasses = ["slidy"];
+
+  function isPartOfHomeGroup(sectionEl) {
+    if (sectionEl.id && homeGroupIds.includes(sectionEl.id)) return true;
+    return homeGroupClasses.some((cls) => sectionEl.classList.contains(cls));
+  }
+
+  function updateActiveNavLinks(targetId) {
+    document.querySelectorAll(".navlinks-container a[data-section]").forEach((link) => {
+      const isCurrent = link.getAttribute("data-section") === targetId;
+      link.classList.toggle("active", isCurrent);
+      if (isCurrent) {
+        link.setAttribute("aria-current", "page");
+      } else {
+        link.removeAttribute("aria-current");
+      }
     });
-    accueilSections.forEach((sec) => {
-      if (sec) {
+  }
+
+  function showOnlySection(targetId) {
+    if (!targetId) return null;
+
+    if (targetId === "home") {
+      allSections.forEach((sec) => {
+        if (isPartOfHomeGroup(sec)) {
+          sec.classList.remove("hidden");
+          sec.classList.add("active");
+        } else {
+          sec.classList.remove("active");
+          sec.classList.add("hidden");
+        }
+      });
+
+      updateActiveNavLinks("home");
+      if (typeof AOS !== "undefined" && typeof AOS.refresh === "function") {
+        AOS.refresh();
+      }
+      return document.getElementById("home");
+    }
+
+    const targetEl = document.getElementById(targetId);
+    if (!targetEl) return null;
+
+    // Masque toutes les autres sections (y compris #home, #highlights, .slidy)
+    allSections.forEach((sec) => {
+      if (sec === targetEl) {
+        sec.classList.remove("hidden");
+        sec.classList.add("active");
+      } else {
         sec.classList.remove("active");
         sec.classList.add("hidden");
       }
     });
+
+    updateActiveNavLinks(targetId);
+
+    if (typeof AOS !== "undefined" && typeof AOS.refresh === "function") {
+      AOS.refresh();
+    }
+
+    return targetEl;
   }
 
-  function showAccueil() {
-    accueilSections.forEach((sec) => {
-      if (sec) {
-        sec.classList.remove("hidden");
-        sec.classList.add("active");
-      }
-    });
-  }
+  window.phenixShowSection = showOnlySection;
 
-  function openSection(sectionId, shouldScroll = true) {
-    if (!sectionId) return;
+  navTriggers.forEach((trigger) => {
+    trigger.addEventListener("click", (e) => {
+      const targetId = trigger.getAttribute("data-section");
+      if (!targetId) return;
 
-    hideEverything();
-
-    if (sectionId === "home") {
-      showAccueil();
-      if (shouldScroll) {
+      const targetEl = showOnlySection(targetId);
+      if (targetEl) {
+        e.preventDefault();
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
-      return;
-    }
-
-    const target = document.getElementById(sectionId);
-    if (target) {
-      target.classList.remove("hidden");
-      target.classList.add("active");
-      if (shouldScroll) {
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    }
-  }
-
-  // 🔹 Tous les liens internes (header, hero, footer) avec data-section ou href="#..."
-  const internalLinks = document.querySelectorAll('a[data-section], a[href^="#"]');
-  internalLinks.forEach((link) => {
-    link.addEventListener("click", (e) => {
-      const href = link.getAttribute("href") || "";
-      const sectionId =
-        link.getAttribute("data-section") ||
-        (href.startsWith("#") ? href.slice(1) : "");
-
-      if (!sectionId) return;
-      e.preventDefault();
-      openSection(sectionId, true);
     });
   });
 
-  // 🔹 Arrivée directe avec un #hash dans l'URL
-  const hash = window.location.hash ? window.location.hash.slice(1) : "";
-  if (hash && document.getElementById(hash)) {
-    openSection(hash, true);
-  } else {
-    showAccueil();
-  }
+  // État initial au chargement : uniquement l'accueil (#home + #highlights + .slidy)
+  showOnlySection("home");
 });

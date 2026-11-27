@@ -1,67 +1,82 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const sliderContainer = document.querySelector(".slider-container");
-  const slider = document.querySelector(".slider-container .slider");
-  const slides = document.querySelectorAll(".slider-container .slide");
-  const prevBtn = document.querySelector(".slider-container .prev");
-  const nextBtn = document.querySelector(".slider-container .next");
+  const sliderContainer = document.querySelector(".slidy .slider-container");
+  const slider = sliderContainer?.querySelector(".slider");
+  const slides = slider ? Array.from(slider.querySelectorAll(".slide")) : [];
+  const prevBtn = sliderContainer?.querySelector(".prev");
+  const nextBtn = sliderContainer?.querySelector(".next");
 
-  const priceBox = document.getElementById("price-display");
-  const priceText = document.getElementById("price-text");
-  const closePriceBtn = document.getElementById("close-price");
+  if (!sliderContainer || !slider || !slides.length) return;
 
-  if (!slider || slides.length === 0) return;
-
-  const AUTOPLAY_DELAY = 4000; // 4 secondes entre chaque diapositive
+  const AUTOPLAY_DELAY = 3500;
   let currentIndex = 0;
   let autoplayTimer = null;
+
+  let isPausedByModal = false;
   let isPausedByHover = false;
 
-  function goToSlide(index) {
-    currentIndex = (index + slides.length) % slides.length;
+  function updateSlidePosition() {
     slider.style.transform = `translateX(-${currentIndex * 100}%)`;
   }
 
-  function startAutoplay() {
-    stopAutoplay();
-    if (isPausedByHover || document.hidden) return;
-    autoplayTimer = setInterval(() => {
-      goToSlide(currentIndex + 1);
-    }, AUTOPLAY_DELAY);
+  function goToSlide(index) {
+    const total = slides.length;
+    currentIndex = ((index % total) + total) % total;
+    updateSlidePosition();
+  }
+
+  function canAutoplay() {
+    if (document.hidden) return false;
+    if (isPausedByModal || isPausedByHover) return false;
+    return true;
   }
 
   function stopAutoplay() {
-    if (autoplayTimer) {
+    if (autoplayTimer !== null) {
       clearInterval(autoplayTimer);
       autoplayTimer = null;
     }
   }
 
-  function restartAutoplay() {
-    startAutoplay();
+  function startAutoplay() {
+    stopAutoplay();
+    if (!canAutoplay()) return;
+    autoplayTimer = setInterval(() => {
+      goToSlide(currentIndex + 1);
+    }, AUTOPLAY_DELAY);
   }
 
-  prevBtn?.addEventListener("click", () => {
+  prevBtn?.addEventListener("click", (e) => {
+    e.stopPropagation();
     goToSlide(currentIndex - 1);
-    restartAutoplay();
+    startAutoplay();
   });
 
-  nextBtn?.addEventListener("click", () => {
+  nextBtn?.addEventListener("click", (e) => {
+    e.stopPropagation();
     goToSlide(currentIndex + 1);
-    restartAutoplay();
+    startAutoplay();
   });
 
-  // Pause au survol de la souris et reprise quand on quitte le carrousel
-  sliderContainer?.addEventListener("mouseenter", () => {
+  sliderContainer.addEventListener("mouseenter", () => {
     isPausedByHover = true;
     stopAutoplay();
   });
 
-  sliderContainer?.addEventListener("mouseleave", () => {
+  sliderContainer.addEventListener("mouseleave", () => {
     isPausedByHover = false;
     startAutoplay();
   });
 
-  // Pause si l'onglet du navigateur passe en arrière-plan
+  document.addEventListener("catalog:modal-open", () => {
+    isPausedByModal = true;
+    stopAutoplay();
+  });
+
+  document.addEventListener("catalog:modal-close", () => {
+    isPausedByModal = false;
+    startAutoplay();
+  });
+
   document.addEventListener("visibilitychange", () => {
     if (document.hidden) {
       stopAutoplay();
@@ -70,24 +85,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Affichage du repère de prix au clic sur une image
-  slides.forEach((slide) => {
-    const img = slide.querySelector("img");
-    img?.addEventListener("click", () => {
-      if (!priceBox || !priceText) return;
-      const label = img.alt || "Modèle";
-      const price = img.dataset.price || "Sur devis";
-      priceText.textContent = `${label} — Repère de prix : ${price}`;
-      priceBox.classList.remove("hidden");
-      stopAutoplay();
-    });
-  });
-
-  closePriceBtn?.addEventListener("click", () => {
-    priceBox?.classList.add("hidden");
-    startAutoplay();
-  });
-
-  // Démarrage du défilement automatique
+  updateSlidePosition();
   startAutoplay();
 });
